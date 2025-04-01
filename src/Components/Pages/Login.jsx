@@ -126,7 +126,7 @@ const Login = () => {
     return (
         <Card
             shadow={true}
-            className="md:px-24 md:py-14 py-8 border border-gray-300 my-10 md:w-6/12 w-10/12 mx-auto"
+            className="md:px-24 md:py-14 py-8 border border-gray-300 my-10 sm:w-6/12 w-10/12 mx-auto"
         >
             <Helmet>
                 <title>Bliss Bonds - Login</title>

@@ -64,13 +64,13 @@ const Biodatas = () => {
       <h1 className="gloock-regular sm:text-5xl text-4xl text-center mt-20"> Biodatas of the BlissBonds Website</h1>
       <p className="gilda-display-regular text-lg text-center mt-5">Where we can find the preferable biodata through your intrest</p>
 
-      <div className="flex flex-col lg:flex-row w-full mt-10">
-        <div className="w-full mx-auto md:mx-0 min-w-[250px] p-4 rounded-md">
+      <div className="flex flex-col lg:flex-row w-full mt-10 gap-8">
+        <div className="w-full sm:w-1/4 mx-auto md:mx-0 min-w-[250px] p-4 rounded-md">
           <h2 className="gilda-display-regular text-2xl mb-3 text-center font-bold gloock-regular">Filter your biodata</h2>
           <BiodataFilter filters={filters} setFilters={setFilters} />
         </div>
 
-        <div className="sm:w-3/4 grid md:grid-cols-2 grid-cols-1 gap-8">
+        <div className="sm:w-3/4 grid md:grid-cols-2 grid-cols-1 gap-7">
           {filteredBiodatas.length > 0 ? (
             filteredBiodatas.map((biodata) => (
               <Card key={biodata.biodataId} className="w-full">
