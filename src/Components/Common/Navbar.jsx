@@ -36,7 +36,8 @@ export function Navbar() {
   }
 
   const navList = (
-    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 lg:mr-96 md:mr-96 ">
+    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 justify-center lg:mr-48 mr-0">
+
       {[
         { id: "home", label: "Home", to: "/" },
         { id: "dashboard", label: "Dashboard", to: "/dashboard" },
@@ -49,10 +50,11 @@ export function Navbar() {
           <NavLink to={to} onClick={() => handleNavClick(id)}>
             <Button
               variant={activeLink === id ? "gradient" : "text"}
-              className="rounded-full px-4 py-2 gloock-regular"
+              className="rounded-full px-4 py-2 gloock-regular whitespace-nowrap"
             >
               {label}
             </Button>
+
           </NavLink>
         </li>
       ))}
@@ -62,21 +64,27 @@ export function Navbar() {
   return (
     <div className="max-h-[768px] bg-gradient-to-b from-pink-300 to-white">
       <MTNavbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 lg:px-8 lg:py-4">
-        <div className="flex items-center justify-between text-blue-gray-900">
-          <div className="flex items-center gap-2">
-            <div className="text-5xl font-extrabold cursor-pointer pinyon-script-regular text-pink-700">
+        <div className="flex items-center justify-between w-full gap-4 text-blue-gray-900">
+
+          {/* Website name and logo wrapped in nowrap container */}
+          <div className="flex items-center gap-2 whitespace-nowrap">
+            <span className="text-5xl font-extrabold cursor-pointer pinyon-script-regular text-pink-700">
               Bliss Bonds
-            </div>
-            <img src={logo} className="w-16 mb-6" alt="" />
+            </span>
+            <img src={logo} className="w-16 mb-1" alt="Bliss Bonds Logo" />
           </div>
 
+
           <div className="flex items-center gap-4">
-            <div className="mr-4 hidden lg:block">{navList}</div>
-            <div className="flex items-center gap-x-3 ">
+            {/* Center nav links in md and lg using flex-grow and justify-center */}
+            <div className="hidden md:flex flex-grow justify-center items-center">
+              {navList}
+            </div>
 
 
-              {user ? <>
-              
+            <div className="flex items-center gap-x-3">
+              {/* User Avatar */}
+              {user ? (
                 <Button
                   variant="text"
                   color="blue-gray"
@@ -88,10 +96,10 @@ export function Navbar() {
                     alt={user?.displayName}
                     className="border border-gray-900 p-0.5"
                     referrerPolicy="no-referrer"
-                    src={user?.photoURL} // Fallback if no photoURL
+                    src={user?.photoURL}
                   />
                 </Button>
-              </> : <>
+              ) : (
                 <Button
                   variant="text"
                   color="blue-gray"
@@ -100,27 +108,30 @@ export function Navbar() {
                   <Avatar
                     variant="circular"
                     size="sm"
-                    alt="tania andrew"
+                    alt="guest"
                     className="border border-gray-900 p-0.5"
-                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d"
                   />
                 </Button>
-              </>
-              }
-             
-              {
-                user ? <>
-                  <Button
-                    variant="text"
-                    size="sm"
-                    className="hidden lg:inline-block text-sm gloock-regular"
-                    onClick={handleLogout}>Log Out</Button>
-                </> : <>
+              )}
+
+              {/* Auth Buttons */}
+              {user ? (
+                <Button
+                  variant="text"
+                  size="sm"
+                  className="hidden lg:inline-block text-sm gloock-regular whitespace-nowrap"
+                  onClick={handleLogout}
+                >
+                  Log Out
+                </Button>
+              ) : (
+                <>
                   <NavLink to="/login">
                     <Button
                       variant={activeLink === "login" ? "gradient" : "text"}
                       size="sm"
-                      className="hidden lg:inline-block text-sm gloock-regular"
+                      className="hidden lg:inline-block text-sm gloock-regular whitespace-nowrap"
                       onClick={() => handleNavClick("login")}
                     >
                       Log In
@@ -130,16 +141,17 @@ export function Navbar() {
                     <Button
                       variant={activeLink === "signup" ? "gradient" : "text"}
                       size="sm"
-                      className="hidden lg:inline-block text-sm gloock-regular"
+                      className="hidden lg:inline-block text-sm gloock-regular whitespace-nowrap"
                       onClick={() => handleNavClick("signup")}
                     >
                       Sign Up
                     </Button>
                   </NavLink>
                 </>
-              }
-
+              )}
             </div>
+
+            {/* Mobile menu toggle */}
             <IconButton
               variant="text"
               className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -171,6 +183,8 @@ export function Navbar() {
             </IconButton>
           </div>
         </div>
+
+        {/* Collapse for mobile view */}
         <Collapse open={openNav}>
           {navList}
           <div className="flex items-center gap-x-1 justify-evenly">
@@ -179,7 +193,7 @@ export function Navbar() {
                 fullWidth
                 variant={activeLink === "login" ? "gradient" : "text"}
                 size="sm"
-                className="rounded-full gloock-regular px-16"
+                className="rounded-full gloock-regular px-16 whitespace-nowrap"
                 onClick={() => handleNavClick("login")}
               >
                 Log In
@@ -191,7 +205,7 @@ export function Navbar() {
                 fullWidth
                 variant={activeLink === "signup" ? "gradient" : "text"}
                 size="sm"
-                className="rounded-full gloock-regular px-16"
+                className="rounded-full gloock-regular px-16 whitespace-nowrap"
                 onClick={() => handleNavClick("signup")}
               >
                 Sign Up
@@ -201,6 +215,7 @@ export function Navbar() {
         </Collapse>
       </MTNavbar>
     </div>
+
   );
 }
 
