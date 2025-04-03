@@ -36,11 +36,11 @@ const Home = () => {
     }, []);
 
     return (
-        <div className='mt-28'>
+        <div className='mt-16'>
             <Helmet>
                 <title>Bliss Bonds - Home</title>
             </Helmet>
-            <div className='text-center space-y-8 my-10'>
+            <div className='text-center space-y-5 my-10'>
                 <h1 className='text-5xl font-bold gloock-regular'>BlissBonds</h1>
                 <h3 className='text-2xl font-bold gloock-regular text-pink-500'>Where Love Finds Its Forever</h3>
                 <p className=' gilda-display-regular w-10/12 mx-auto '>

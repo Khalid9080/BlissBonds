@@ -132,7 +132,7 @@ const Login = () => {
                 <title>Bliss Bonds - Login</title>
             </Helmet>
             <ToastContainer />
-            <Typography variant="h4" color="blue-gray" className='mx-auto text-center text-4xl mb-3 '>
+            <Typography variant="h4" color="blue-gray" className='mx-auto text-center text-4xl mb-3 gloock-regular'>
                 Login Page
             </Typography>
             <Typography color="gray" className="mt-1 font-normal mx-auto text-center">
@@ -196,7 +196,7 @@ const Login = () => {
                             </Typography>
                         )}
                     </div>
-                    <Button type='submit' size="lg" color="gray" fullWidth>
+                    <Button type='submit' size="lg" color="gray" fullWidth className='gloock-regular'>
                         Login
                     </Button>
                     <Button
